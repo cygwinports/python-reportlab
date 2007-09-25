@@ -1,0 +1,16 @@
+inherit distutils
+
+DESCRIPTION="Python ReportLab Toolkit"
+HOMEPAGE="http://www.reportlab.org/"
+SRC_URI="http://www.reportlab.org/ftp/ReportLab_${PV//./_}.tgz"
+PATCH_URI="
+	mirror://portage/dev-python/reportlab/files/${PV}-tests_report_failure.patch
+	mirror://portage/dev-python/reportlab/files/${PV}-test_fix.patch
+"
+
+SRC_DIR="reportlab_${PV//./_}/reportlab"
+
+src_test() {
+	cd ${B}/test
+	PYTHONPATH="../.." ${PYTHON} runAll.py
+}
