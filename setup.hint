@@ -1,5 +1,5 @@
 category: Python Publishing
-requires: python python-imaging
+requires: python python-pil
 sdesc: "Python ReportLab PDF library"
 ldesc: "The ReportLab Open Source PDF library is suitable for web 
 publishers, developers or creative design professionals who need to 
