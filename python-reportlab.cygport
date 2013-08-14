@@ -1,7 +1,7 @@
 inherit distutils
 
 NAME="python-reportlab"
-VERSION=2.6
+VERSION=2.7
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python ReportLab PDF library"
