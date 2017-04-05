@@ -1,7 +1,7 @@
-inherit distutils
+inherit python-wheel
 
 NAME="python-reportlab"
-VERSION=2.7
+VERSION=3.4.0
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python ReportLab PDF library"
@@ -9,9 +9,11 @@ DESCRIPTION="The ReportLab Open Source PDF library is suitable for web
 publishers, developers or creative design professionals who need to quickly
 and easily create or automate complex (even data-driven) documents."
 HOMEPAGE="http://www.reportlab.com/"
-SRC_URI="http://www.reportlab.com/ftp/reportlab-${VERSION}.tar.gz"
+
+PATCH_URI="3.3.0-implicit-decls.patch"
 
 src_test() {
-	cd ${B}/tests
-	PYTHONPATH=".." ${PYTHON} runAll.py
+	cd ${B}
+	PYTHONPATH="${B}/$(ls -d build/lib*-${PYTHON2_VERSION})" ${PYTHON2} tests/runAll.py
+	PYTHONPATH="${B}/$(ls -d build/lib*-${PYTHON3_VERSION})" ${PYTHON3} tests/runAll.py
 }
