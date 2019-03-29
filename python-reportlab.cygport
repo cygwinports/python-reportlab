@@ -1,7 +1,7 @@
 inherit python-wheel
 
 NAME="python-reportlab"
-VERSION=3.4.0
+VERSION=3.5.16
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python ReportLab PDF library"
@@ -10,10 +10,15 @@ publishers, developers or creative design professionals who need to quickly
 and easily create or automate complex (even data-driven) documents."
 HOMEPAGE="http://www.reportlab.com/"
 
-PATCH_URI="3.3.0-implicit-decls.patch"
+PATCH_URI="
+	3.3.0-implicit-decls.patch
+	3.5.16-system-libart.patch
+"
 
 src_test() {
 	cd ${B}
-	PYTHONPATH="${B}/$(ls -d build/lib*-${PYTHON2_VERSION})" ${PYTHON2} tests/runAll.py
-	PYTHONPATH="${B}/$(ls -d build/lib*-${PYTHON3_VERSION})" ${PYTHON3} tests/runAll.py
+	for v in ${PYTHON_WHEEL_VERSIONS//:/ }
+	do
+		PYTHONPATH="${B}/$(ls -d build/lib*-$v)" python$v tests/runAll.py
+	done
 }

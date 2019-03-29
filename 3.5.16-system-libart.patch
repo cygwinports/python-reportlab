@@ -1,0 +1,9 @@
+--- origsrc/reportlab-3.5.16/setup.cfg	2019-03-27 11:01:39.000000000 -0400
++++ src/reportlab-3.5.16/setup.cfg	2019-03-29 11:18:21.980468700 -0400
+@@ -12,3 +12,6 @@ inc = c:\ux\xb33\include\freetype2
+ tag_build = 
+ tag_date = 0
+ 
++[OPTIONS]
++no-download-t1-files=1
++use-system-libart=1
